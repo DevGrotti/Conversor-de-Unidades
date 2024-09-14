@@ -72,6 +72,16 @@ fun Conversor(){
                 }
                 DropdownMenu(expanded = inputExpandido, onDismissRequest = { inputExpandido = false }) {
                     DropdownMenuItem(
+                        text = { Text(text = "Milimetro") },
+                        onClick = {
+                            inputExpandido = false
+                            inputUnidade = "Milimetro"
+                            inputConversor.value = 0.001
+                            converterUnidades()
+                        }
+                    )
+
+                    DropdownMenuItem(
                         text = { Text(text = "Centímetros") },
                         onClick = {
                             inputExpandido = false
@@ -80,6 +90,17 @@ fun Conversor(){
                             converterUnidades()
                         }
                     )
+
+                    DropdownMenuItem(
+                        text = { Text(text = "Decimetro") },
+                        onClick = {
+                            inputExpandido = false
+                            inputUnidade = "Decimetro"
+                            inputConversor.value = 0.1
+                            converterUnidades()
+                        }
+                    )
+
                     DropdownMenuItem(
                         text = { Text(text = "Metros") },
                         onClick = {
@@ -89,6 +110,27 @@ fun Conversor(){
                             converterUnidades()
                         }
                     )
+
+                    DropdownMenuItem(
+                        text = { Text(text = "Decametro") },
+                        onClick = {
+                            inputExpandido = false
+                            inputUnidade = "Decametro"
+                            inputConversor.value = 10.0
+                            converterUnidades()
+                        }
+                    )
+
+                    DropdownMenuItem(
+                        text = { Text(text = "Hectômetro") },
+                        onClick = {
+                            inputExpandido = false
+                            inputUnidade = "Hectômetro"
+                            inputConversor.value = 100.00
+                            converterUnidades()
+                        }
+                    )
+
                     DropdownMenuItem(
                         text = { Text(text = "Quilômetros") },
                         onClick = {
@@ -112,6 +154,16 @@ fun Conversor(){
                 }
                 DropdownMenu(expanded = outputExpandido, onDismissRequest = { outputExpandido = false }) {
                     DropdownMenuItem(
+                        text = { Text(text = "Milimetro") },
+                        onClick = {
+                            outputExpandido = false
+                            outputUnidade = "Milimetros"
+                            outputConversor.value = 0.001
+                            converterUnidades()
+                        }
+                    )
+
+                    DropdownMenuItem(
                         text = { Text(text = "Centímetros") },
                         onClick = {
                             outputExpandido = false
@@ -120,6 +172,17 @@ fun Conversor(){
                             converterUnidades()
                         }
                     )
+
+                    DropdownMenuItem(
+                        text = { Text(text = "Decimetro") },
+                        onClick = {
+                            outputExpandido = false
+                            outputUnidade = "Decimetro"
+                            outputConversor.value = 0.1
+                            converterUnidades()
+                        }
+                    )
+
                     DropdownMenuItem(
                         text = { Text(text = "Metros") },
                         onClick = {
@@ -129,6 +192,27 @@ fun Conversor(){
                             converterUnidades()
                         }
                     )
+
+                    DropdownMenuItem(
+                        text = { Text(text = "Decametro") },
+                        onClick = {
+                            outputExpandido = false
+                            outputUnidade = "Decametro"
+                            outputConversor.value = 10.0
+                            converterUnidades()
+                        }
+                    )
+
+                    DropdownMenuItem(
+                        text = { Text(text = "Hectômetro") },
+                        onClick = {
+                            outputExpandido = false
+                            outputUnidade = "Hectômetro"
+                            outputConversor.value = 100.00
+                            converterUnidades()
+                        }
+                    )
+
                     DropdownMenuItem(
                         text = { Text(text = "Quilômetros") },
                         onClick = {
@@ -147,15 +231,5 @@ fun Conversor(){
         Text(text = "Resultado: $outputValor $outputUnidade", style = MaterialTheme.typography.headlineMedium)
     }
 }
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun converterUnidadesPreview(){
-    Conversor()
-
-}
-
 
 
