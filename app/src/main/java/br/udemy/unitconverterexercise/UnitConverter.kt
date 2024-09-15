@@ -1,6 +1,5 @@
 package br.udemy.unitconverterexercise
 
-import android.os.Message
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,9 +24,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import kotlin.math.roundToInt
+import kotlin.math.absoluteValue
 
 @Composable
 fun Conversor(){
@@ -44,8 +43,8 @@ fun Conversor(){
 
     fun converterUnidades() {
 
-        val inputValorDecimal = inputValor.toDoubleOrNull() ?: 0.0
-        val res = (inputValorDecimal * inputConversor.value * 100.0 / outputConversor.value).roundToInt() / 100.0
+        val inputValorDecimal = inputValor.toDoubleOrNull() ?: 0.00
+        val res = (inputValorDecimal * inputConversor.value * 100.0 / outputConversor.value) / 100.0
         outputValor = res.toString()
     }
 
@@ -54,7 +53,7 @@ fun Conversor(){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Conversor de Unidades", style = MaterialTheme.typography.headlineMedium)
+        Text(text = stringResource(R.string.titulo), style = MaterialTheme.typography.headlineMedium)
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
             value = inputValor,
@@ -62,7 +61,7 @@ fun Conversor(){
                 inputValor = it
                 converterUnidades()
             },
-            label = { Text("Insira o valor")})
+            label = { Text(stringResource(R.string.hint))})
         Spacer(modifier = Modifier.height(16.dp))
         Row {
             Box{
@@ -72,17 +71,17 @@ fun Conversor(){
                 }
                 DropdownMenu(expanded = inputExpandido, onDismissRequest = { inputExpandido = false }) {
                     DropdownMenuItem(
-                        text = { Text(text = "Milimetro") },
+                        text = { Text(text = stringResource(id = R.string.milimetro)) },
                         onClick = {
                             inputExpandido = false
-                            inputUnidade = "Milimetro"
+                            inputUnidade = "Milimetros"
                             inputConversor.value = 0.001
                             converterUnidades()
                         }
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Centímetros") },
+                        text = { Text(text = stringResource(id = R.string.centimetro)) },
                         onClick = {
                             inputExpandido = false
                             inputUnidade = "Centímetros"
@@ -92,17 +91,17 @@ fun Conversor(){
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Decimetro") },
+                        text = { Text(text = stringResource(id = R.string.decimetro)) },
                         onClick = {
                             inputExpandido = false
-                            inputUnidade = "Decimetro"
+                            inputUnidade = "Decimetros"
                             inputConversor.value = 0.1
                             converterUnidades()
                         }
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Metros") },
+                        text = { Text(text = stringResource(id = R.string.metro)) },
                         onClick = {
                             inputExpandido = false
                             inputUnidade = "Metros"
@@ -112,27 +111,27 @@ fun Conversor(){
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Decametro") },
+                        text = { Text(text = stringResource(id = R.string.decametro)) },
                         onClick = {
                             inputExpandido = false
-                            inputUnidade = "Decametro"
+                            inputUnidade = "Decametros"
                             inputConversor.value = 10.0
                             converterUnidades()
                         }
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Hectômetro") },
+                        text = { Text(text = stringResource(id = R.string.hectometro)) },
                         onClick = {
                             inputExpandido = false
-                            inputUnidade = "Hectômetro"
+                            inputUnidade = "Hectômetros"
                             inputConversor.value = 100.00
                             converterUnidades()
                         }
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Quilômetros") },
+                        text = { Text(text = stringResource(id = R.string.quilometro)) },
                         onClick = {
                             inputExpandido = false
                             inputUnidade = "Quilômetros"
@@ -154,7 +153,7 @@ fun Conversor(){
                 }
                 DropdownMenu(expanded = outputExpandido, onDismissRequest = { outputExpandido = false }) {
                     DropdownMenuItem(
-                        text = { Text(text = "Milimetro") },
+                        text = { Text(text = stringResource(id = R.string.milimetro)) },
                         onClick = {
                             outputExpandido = false
                             outputUnidade = "Milimetros"
@@ -164,7 +163,7 @@ fun Conversor(){
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Centímetros") },
+                        text = { Text(text = stringResource(id = R.string.centimetro)) },
                         onClick = {
                             outputExpandido = false
                             outputUnidade = "Centímetros"
@@ -174,7 +173,7 @@ fun Conversor(){
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Decimetro") },
+                        text = { Text(text = stringResource(id = R.string.decimetro)) },
                         onClick = {
                             outputExpandido = false
                             outputUnidade = "Decimetro"
@@ -184,7 +183,7 @@ fun Conversor(){
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Metros") },
+                        text = { Text(text = stringResource(id = R.string.metro)) },
                         onClick = {
                             outputExpandido = false
                             outputUnidade = "Metros"
@@ -194,7 +193,7 @@ fun Conversor(){
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Decametro") },
+                        text = { Text(text = stringResource(id = R.string.decametro)) },
                         onClick = {
                             outputExpandido = false
                             outputUnidade = "Decametro"
@@ -204,7 +203,7 @@ fun Conversor(){
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Hectômetro") },
+                        text = { Text(text = stringResource(id = R.string.hectometro)) },
                         onClick = {
                             outputExpandido = false
                             outputUnidade = "Hectômetro"
@@ -214,7 +213,7 @@ fun Conversor(){
                     )
 
                     DropdownMenuItem(
-                        text = { Text(text = "Quilômetros") },
+                        text = { Text(text = stringResource(id = R.string.quilometro)) },
                         onClick = {
                             outputExpandido = false
                             outputUnidade = "Quilômetros"
